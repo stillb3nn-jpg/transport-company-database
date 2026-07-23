@@ -4,8 +4,8 @@
 This project contains a MySQL database designed for a transportation company.
 
 ## Tables
-. passengers
-. trips
+- passengers
+- trips
 
 ## Features
 - Auto-increment primary keys
