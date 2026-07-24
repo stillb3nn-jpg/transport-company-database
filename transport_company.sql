@@ -1,1 +1,2 @@
+SHOW CREATE TABLE passengers;
 SHOW CREATE TABLE trips;
