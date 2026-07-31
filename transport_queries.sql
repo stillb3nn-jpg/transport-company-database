@@ -1,14 +1,15 @@
 USE transport_company;
+
 -- Question 1: Total number of passengers who survived
 
 SELECT COUNT(*) AS total_survived
-FROM trips
+FROM survivals
 WHERE survived = TRUE;
 
 -- Question 2: Total number of passengers who did not survive
 
 SELECT COUNT(*) AS total_not_survived
-FROM trips
+FROM survivals
 WHERE survived = FALSE;
 
 -- Question 3: Name and sex of passengers under age 27
@@ -27,8 +28,10 @@ AND trips.embarkation IN ('Q', 'C');
 
 SELECT COUNT(*) AS southampton_survivors
 FROM trips
-WHERE embarkation = 'S'
-AND survived = TRUE;
+JOIN survivals
+ON trips.passenger_id = survivals.passenger_id
+WHERE trips.embarkation = 'S'
+AND survivals.survived = TRUE;
 
 -- Question 5: Get id, name and total number of passengers
 -- who paid fare greater than $100, were above age 35,
@@ -44,7 +47,7 @@ WHERE trips.fare > 100
 AND passengers.age > 35
 AND trips.siblings_spouses > 0;
 
-SELECT COUNT(*) as total_passengers
+SELECT COUNT(*) AS total_passengers
 FROM passengers
 JOIN trips
 ON passengers.id = trips.passenger_id
